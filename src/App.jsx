@@ -32,8 +32,10 @@ function App() {
                 technologies to create meaningful digital experiences.
               </p>
               <span className="flex items-center gap-1 text-lg hover:bg-blue-400 hover:cursor-pointer w-40 ">
+               <Link className="flex items-center gap-2" to={'/about'}>
                 Learn more
                 <GoArrowRight />
+               </Link>
               </span>
             </div>
           </div>

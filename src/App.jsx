@@ -6,46 +6,25 @@ import { GoArrowRight } from "react-icons/go";
 import ProjectBox from "./Components/ProjectBox";
 import fuzzychat from "../src/assets/project-images/fuzzychat.png";
 import { Link } from "react-router";
-
+import { useSelector } from "react-redux";
 
 function App() {
-  const theme = false;
-
-  const sideBar = [
-    {
-      field : "About",
-      link : '/about'
-    },
-    {
-      field : "Projects",
-      link : '/projects'
-    },
-    {
-      field : "Contact",
-      link : '/contact'
-    },
-  ]
+  const darkTheme = useSelector((state) => state.theme.darkTheme);
 
   return (
-    <div className={`flex  h-screen w-full overflow-hidden ${theme ? "bg-[#0a0a0a]" : "bg-slate-50"} `}>
-
-      <aside
-        className={` hidden md:flex flex-col shrink-0 w-64 lg:w-72 h-full border-r border-gray-100 transition-all duration-300 `}
-      >
-      {
-        sideBar.map(opt=> <p className="font-bold"><Link to={opt.link}>{opt.field}</Link></p>)
-      }
-
-      </aside>
-
-      <main className="flex-1 flex flex-col  w-full h-full overflow-hidden relative ">
-        <div className="flex-1  overflow-y-auto custom-scrollbar  ">
-          <div className="w-full  max-w-2xl px-12 lg:px-24 h-102 flex flex-col gap-8 justify-end bg-red-300">
+    <div
+      className={`flex  h-screen w-full overflow-hidden ${darkTheme ? "text-white bg-gray-900" : "bg-slate-50 text-black"} transition-colors duration-500 `}
+    >
+      <main className="flex-1 flex flex-col items-center  w-full h-full transition-all duration-500">
+        <div className="flex-1  overflow-y-auto   ">
+          <div className="w-full  max-w-2xl px-12 lg:px-24 h-1/3 flex flex-col gap-8 ">
             <div>
               <h1 className="md:text-2xl text-xl font-semibold md:font-bold">
                 Hi, I'm Aniket
               </h1>
-              <h3 className="md:text-xl text-lg text-gray-500 ">
+              <h3
+                className={`md:text-xl text-lg ${darkTheme ? "text-blue-400" : "text-blue-500"}`}
+              >
                 Final-year Computer Engineering student
               </h3>
               <p className="text-lg my-10">
@@ -59,15 +38,16 @@ function App() {
             </div>
           </div>
 
-          <div className="w-full max-w-2xl px-12 lg:px-24 h-80 flex flex-col gap-8 mt-10 border-t  border-gray-200  ">
+          <div
+            className={`w-full max-w-2xl px-12 lg:px-24  flex flex-col gap-8 border-t transition-all duration-500 ${darkTheme ? "border-gray-700" : "border-gray-200"}  `}
+          >
             <div className="mt-10">
               <h1 className="md:text-xl text-xl font-semibold md:font-bold">
                 Personal Projects
               </h1>
 
-              <p className="text-lg my-10">
-                I enjoy building clean, responsive websites and learning modern
-                technologies to create meaningful digital experiences.
+              <p className="text-base my-10">
+                Below are some of my personal projects.
               </p>
             </div>
           </div>
@@ -98,7 +78,6 @@ function App() {
           </div>
         </div>
       </main>
-
     </div>
   );
 }

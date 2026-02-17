@@ -4,7 +4,9 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider } from 'react-router'
 import Layout from './outlet/Outlet.jsx'
-import {About,Contact} from './Pages/index.js'
+import {About,Contact, Projects} from './Pages/index.js'
+import { store } from './store/store.js'
+import { Provider } from 'react-redux'
 
 let routers = createBrowserRouter([
   {
@@ -22,6 +24,10 @@ let routers = createBrowserRouter([
       {
         path : 'contact',
         Component : Contact
+      },
+      {
+        path : 'projects',
+        Component : Projects
       }
     ]
   }
@@ -31,7 +37,9 @@ let routers = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   
   <StrictMode>
+    <Provider store = {store}>
     <RouterProvider router={routers} />
+    </Provider>
   </StrictMode>,
   
 )
